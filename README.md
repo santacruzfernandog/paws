@@ -1,7 +1,7 @@
 # Detalles del Proyecto: Paws
 
 
-La idea del proyecto es desarrollar una tienda online que comercializa productos y servicios para mascotas.
+Paws (patitas en español). La idea del proyecto es desarrollar una tienda online que comercializa productos y servicios para mascotas.
 
 Va a contener una seccion para explorar los productos que se ofrecen, otra seccion detallando los servicios que se prestan, quizas tambien ofrecer un servicio de "Obra social" para mascotas, una seccion de adopcion responsable, educacion y adiestramiento.
 
