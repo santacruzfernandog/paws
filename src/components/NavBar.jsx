@@ -2,7 +2,7 @@ import React from 'react'
 import imagen from '../img/gold-paws.png'
 import CartWidget from './CartWidget'
 
-const NavBar = () => {
+const NavBar = ({onAdd}) => {
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-info">
@@ -77,7 +77,7 @@ const NavBar = () => {
                 </div>
 
                 <div className="p-5">
-                    <CartWidget/>
+                    <CartWidget onAdd={onAdd}/>
                 </div>
             </nav>
         </div>
