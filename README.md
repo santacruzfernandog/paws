@@ -1,7 +1,7 @@
-# Detalles del Proyecto: Paws
+# Detalles del Proyecto: Aw.Pets
 
 
-Paws (patitas en español). La idea del proyecto es desarrollar una plataforma online que ofrece servicios para mascotas (algunos gratuitos y otros pagos).
+Aw.Pets (Awesome Pets). La idea del proyecto es desarrollar una plataforma online que ofrece servicios para mascotas (algunos gratuitos y otros pagos).
 
 Va a contener una seccion para explorar los servicios que se ofrecen detallando las prestaciones, quizas tambien ofrecer un servicio de "Obra social" para mascotas, una seccion de adopcion responsable, educacion y adiestramiento, entre otras.
 
