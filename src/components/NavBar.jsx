@@ -1,14 +1,16 @@
 import React from 'react'
-import imagen from '../img/gold-paws.png'
+import ourpetslogo from '../img/ourpetslogobrand.png'
 import CartWidget from './CartWidget'
+
+import { Link } from 'react-router-dom'
 
 const NavBar = () => {
     return (
         <div>
-            <nav className="navbar navbar-expand-lg navbar-light bg-info">
+            <nav className="navbar navbar-expand-lg navbar-light bg-warning">
                 <div className="navbar-brand">
-                    <img src={imagen} width="100" alt=""/>
-                    <h5 className="text-center text-warning">AmongPaws</h5>
+                    <img src={ourpetslogo} width="100" alt=""/>
+                    <h2 id="my-brand" className="text-center text-black m-0">Aw.Pets</h2>
                 </div>
 
                 <button className="navbar-toggler bg-light" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,8 +19,8 @@ const NavBar = () => {
 
                 <div className="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
                     <div className="d-flex flex-column">
-                        <div className="input-group input-group-lg">
-                            <input type="text" className="form-control" placeholder="Buscar productos" aria-label="Buscar productos" aria-describedby="button-addon2"/>
+                        <div className="input-group input-group-sm">
+                            <input type="text" className="form-control" placeholder="Buscar" aria-label="Buscar servicios" aria-describedby="button-addon2"/>
                             <div className="input-group-append">
                                 <button className="btn btn-outline-light" type="button" id="button-addon2">
                                     <i className="fas fa-search fa-lg"></i>
@@ -28,56 +30,47 @@ const NavBar = () => {
 
                         <ul className="navbar-nav">
                             <li className="nav-item dropdown">
-                                <a className="nav-link h5 text-light dropdown-toggle" href="#" id="navbarDropdownMarcas" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <Link to={''} className="nav-link h6 text-light dropdown-toggle" id="navbarDropdownMarcas" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Mascotas
-                                </a>
+                                </Link>
                                 <div className="dropdown-menu mr-5" aria-labelledby="navbarDropdownMarcas">
-                                    <a className="dropdown-item" href="#">Perros</a>
-                                    <a className="dropdown-item" href="#">Gatos</a>
-                                    <a className="dropdown-item" href="#">Peces</a>
-                                    <a className="dropdown-item" href="#">Roedores</a>
-                                    <a className="dropdown-item" href="#">Aves</a>
-                                    <a className="dropdown-item" href="#">Reptiles</a>
+                                    <Link to={''} className="dropdown-item">Perros</Link>
+                                    <Link to={''} className="dropdown-item">Gatos</Link>
+                                    <Link to={''} className="dropdown-item">Peces</Link>
+                                    <Link to={''} className="dropdown-item">Roedores</Link>
+                                    <Link to={''} className="dropdown-item">Aves</Link>
+                                    <Link to={''} className="dropdown-item">Reptiles</Link>
                                 </div>
                             </li>
                             <li className="nav-item dropdown">
-                                <a className="nav-link h5 text-light dropdown-toggle" href="#" id="navbarDropdownMarcas" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Marcas
-                                </a>
-                                <div className="dropdown-menu mr-5" aria-labelledby="navbarDropdownMarcas">
-                                    <a className="dropdown-item" href="#">Purina</a>
-                                    <a className="dropdown-item" href="#">Royal Canin</a>
-                                    <a className="dropdown-item" href="#">Pedigree</a>
-                                    <a className="dropdown-item" href="#">Eukanuba</a>
-                                    <a className="dropdown-item" href="#">Whiskas</a>
-                                    <a className="dropdown-item" href="#">Vital Can</a>
-                                    <a className="dropdown-item" href="#">Old Prince</a>
-                                </div>
+                                <Link to={''} className="nav-link h6 text-light" role="button">
+                                    Obra Social
+                                </Link>
                             </li>
                             <li className="nav-item dropdown">
-                                <a className="nav-link h5 text-light dropdown-toggle" href="#" id="navbarDropdownServicios" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <Link to={''} className="nav-link h6 text-light dropdown-toggle" id="navbarDropdownServicios" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Servicios
-                                </a>
+                                </Link>
                                 <div className="dropdown-menu" aria-labelledby="navbarDropdownServicios">
-                                    <a className="dropdown-item" href="#">Adopciones</a>
-                                    <a className="dropdown-item" href="#">Adiestramiento</a>
-                                    <a className="dropdown-item" href="#">Calendario de vacunacion</a>
-                                    <a className="dropdown-item" href="#">Capacitaciones</a>
-                                    <a className="dropdown-item" href="#">Guarderia</a>
-                                    <a className="dropdown-item" href="#">Veterinario</a>
-                                    <div className="dropdown-divider"></div>
-                                    <a className="dropdown-item" href="#">Obra Social</a>
+                                    <Link to={''} className="dropdown-item">Adopciones</Link>
+                                    <Link to={''} className="dropdown-item">Adiestramiento</Link>
+                                    <Link to={''} className="dropdown-item">Calendario de vacunacion</Link>
+                                    <Link to={''} className="dropdown-item">Capacitaciones</Link>
+                                    <Link to={''} className="dropdown-item">Guarderia</Link>
+                                    <Link to={''} className="dropdown-item">Veterinario</Link>
+                                    {/* <div className="dropdown-divider"></div>
+                                    <Link to={''} className="dropdown-item">Obra Social</Link> */}
                                 </div>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link h5 text-light" href="#">Ofertas</a>
+                                <Link to={''} className="nav-link h6 text-light">Consultas</Link>
                             </li>
                         </ul>
                     </div>
                 </div>
 
-                <div className="p-5">
-                    <CartWidget totalProductos={5}/>
+                <div className="">
+                    <CartWidget totalProductos={0}/>
                 </div>
             </nav>
         </div>

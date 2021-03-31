@@ -1,33 +1,34 @@
 import React, {useEffect} from 'react'
 import ItemDetail from './ItemDetail'
-import products1 from '../img/products1.jpg'/* 
-import cutecat1 from '../img/cutecat1.jpg'
-import cutecat2 from '../img/cutecat2.jpg' */
 
-const ItemDetailContainer = () => {
+const ItemDetailContainer = ({item}) => {
 
-    const [item, setItem] = React.useState([])
+    const [myItem, setMyItem] = React.useState([])
 
     const getItems = ()=> {
         const promise = new Promise((resolve, reject)=> {
-            setTimeout(()=>{
+            resolve(
+                { id:item.id, title:item.nombre, price:item.price, picture:item.img, descripcion:'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo quisquam sit quia assumenda ratione, quasi labore totam cum!', random:Math.floor(Math.random() * 10) + 100 }
+            )
+
+            /* setTimeout(()=>{
                 resolve(
-                    { id:1, title:"Alimento Balanceado", price:1520, pictureUrl:products1, descripcion:'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo quisquam sit quia assumenda ratione, quasi labore totam cum!', random:Math.floor(Math.random() * 10) + 100 }
+                    { id:item.id, title:item.nombre, price:1520, picture:item.img, descripcion:'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo quisquam sit quia assumenda ratione, quasi labore totam cum!', random:Math.floor(Math.random() * 10) + 100 }
                 )
-            },2000)
+            },2000) */
         })
 
         return promise
     }
 
     useEffect(()=> {
-        getItems().then(response => setItem(response))
+        getItems().then(response => setMyItem(response))
         return
     },[])
 
     return (
         <div>
-            <ItemDetail item={item}/>
+            <ItemDetail item={myItem}/>
         </div>
     )
 }
