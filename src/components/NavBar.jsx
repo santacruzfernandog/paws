@@ -8,10 +8,10 @@ const NavBar = () => {
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-warning">
-                <div className="navbar-brand">
+                <Link to='/' className="navbar-brand">
                     <img src={ourpetslogo} width="100" alt=""/>
                     <h2 id="my-brand" className="text-center text-black m-0">Aw.Pets</h2>
-                </div>
+                </Link>
 
                 <button className="navbar-toggler bg-light" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
@@ -28,42 +28,31 @@ const NavBar = () => {
                             </div>
                         </div>
 
-                        <ul className="navbar-nav">
-                            <li className="nav-item dropdown">
-                                <Link to={''} className="nav-link h6 text-light dropdown-toggle" id="navbarDropdownMarcas" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Mascotas
+                        <ul id="ul-nav" className="navbar-nav">
+                            <li className="nav-item">
+                                <Link to='/' className="nav-link h5 text-light">
+                                    Inicio
                                 </Link>
-                                <div className="dropdown-menu mr-5" aria-labelledby="navbarDropdownMarcas">
-                                    <Link to={''} className="dropdown-item">Perros</Link>
-                                    <Link to={''} className="dropdown-item">Gatos</Link>
-                                    <Link to={''} className="dropdown-item">Peces</Link>
-                                    <Link to={''} className="dropdown-item">Roedores</Link>
-                                    <Link to={''} className="dropdown-item">Aves</Link>
-                                    <Link to={''} className="dropdown-item">Reptiles</Link>
-                                </div>
-                            </li>
-                            <li className="nav-item dropdown">
-                                <Link to={''} className="nav-link h6 text-light" role="button">
-                                    Obra Social
-                                </Link>
-                            </li>
-                            <li className="nav-item dropdown">
-                                <Link to={''} className="nav-link h6 text-light dropdown-toggle" id="navbarDropdownServicios" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Servicios
-                                </Link>
-                                <div className="dropdown-menu" aria-labelledby="navbarDropdownServicios">
-                                    <Link to={''} className="dropdown-item">Adopciones</Link>
-                                    <Link to={''} className="dropdown-item">Adiestramiento</Link>
-                                    <Link to={''} className="dropdown-item">Calendario de vacunacion</Link>
-                                    <Link to={''} className="dropdown-item">Capacitaciones</Link>
-                                    <Link to={''} className="dropdown-item">Guarderia</Link>
-                                    <Link to={''} className="dropdown-item">Veterinario</Link>
-                                    {/* <div className="dropdown-divider"></div>
-                                    <Link to={''} className="dropdown-item">Obra Social</Link> */}
-                                </div>
                             </li>
                             <li className="nav-item">
-                                <Link to={''} className="nav-link h6 text-light">Consultas</Link>
+                                <Link to='/servicios' className="nav-link h5 text-light">
+                                    Servicios
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to={'/refugio'} className="nav-link h5 text-light">
+                                    Refugio
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to='/wellness' className="nav-link h5 text-light" role="button">
+                                    +Wellness
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to='/consultas' className="nav-link h5 text-light">
+                                    Consultas
+                                </Link>
                             </li>
                         </ul>
                     </div>
