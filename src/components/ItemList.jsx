@@ -10,9 +10,6 @@ const ItemList = ({items = [], tipo}) => {
         setListado(itemsFiltrados)
     },[items,tipo])
 
-
-    //console.log(tipo)
-
     return (
         <div>
             {listado.map(item => <Item item={item} key={item.id}/> )}
