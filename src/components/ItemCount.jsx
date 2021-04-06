@@ -16,10 +16,6 @@ const ItemCount = ({stock, initial, onAdd}) => {
         }
     }
 
-    const addHandler = ()=>{
-        onAdd(count)
-    }
-
     return (
         <div className="card border-white" style={{width: '15rem'}}>
             <div className="card-body">
@@ -36,7 +32,7 @@ const ItemCount = ({stock, initial, onAdd}) => {
                         </button>
                     </div>
                 </div>
-                <button className="btn btn-info btn-sm btn-block" disabled={count === 0} onClick={addHandler}>Agregar al Carrito</button>
+                <button className="btn btn-info btn-sm btn-block" disabled={count === 0} onClick={ ()=> onAdd(count)}>Agregar al Carrito</button>
             </div>
         </div>
     )

@@ -1,10 +1,14 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import ItemCount from './ItemCount'
 
 const ItemDetail = ({item}) => {
 
+    const [cantidad, setCantidad] = React.useState(0)
+
     const seAgrego = (num)=> {
         console.log(`Se agrego ${num} productos al carrito`)
+        setCantidad(num)
     }
 
     return (
@@ -36,7 +40,15 @@ const ItemDetail = ({item}) => {
                                     </div>
                                 </div>
                                 <div className="d-flex">
-                                    <ItemCount stock={12} initial={1} onAdd={seAgrego}/>
+                                    {
+                                        cantidad === 0 ? (
+                                                <ItemCount stock={12} initial={1} onAdd={seAgrego}/>
+                                            ) : (
+                                                <div className="mx-auto">
+                                                    <Link to="/cart" className="btn btn-sm btn-warning mt-5">Terminar mi compra</Link>
+                                                </div>
+                                            )
+                                    }
                                 </div>
                             </div>
                         </div>

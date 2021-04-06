@@ -78,6 +78,13 @@ function App() {
             <ItemList items={items} tipo={'servicio'}/>
           </ItemListContainer>
         </Route>
+        
+        <Route path="/cart" exact>
+          <ItemListContainer
+            titulo={'Cart'}
+            subtitulo={'Componente momentaneamente vacio'}>
+          </ItemListContainer>
+        </Route>
       </Switch>
       <Footer/>
     </BrowserRouter>
