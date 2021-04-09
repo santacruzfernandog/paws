@@ -1,16 +1,35 @@
-import React from 'react'
+import React, {useEffect} from 'react'
+import ItemList from './ItemList';
+import {useParams} from 'react-router-dom'
+import data from '../data'
 
-const ItemListContainer = (props) => {
+const ItemListContainer = () => {
+
+  const [items, setItems] = React.useState([])
+  const { categoryId } = useParams();
+
+  useEffect(()=>{
+    const promFilter = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (categoryId) {
+          const products = data.filter((producto) => {
+            return producto.category.toString() === categoryId;
+          });
+          resolve(products);
+        } else {
+          resolve(data)
+        }
+      }, 2000);
+    });
+      
+    promFilter.then((resultado) => {
+        setItems(resultado);
+    });
+  }, [categoryId]);
+      
 
     return (
-        <div className="container mt-5">
-          <div className="mb-5">
-                <h1 id="my-brand" className="text-center text-warning mb-4 brand-title">{props.titulo}</h1>
-                <p id="subtitle" className="text-dark text-center h6">{props.subtitulo}</p>
-          </div>
-          
-          {props.children}
-        </div>
+        <ItemList items={items} />
     )
 }
 

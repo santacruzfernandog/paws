@@ -1,17 +1,7 @@
 import React from 'react'
-import ItemDetailContainer from './ItemDetailContainer'
+import { Link } from 'react-router-dom'
 
 const Item = ({item}) => {
-
-    const [mostrarDetalle, setMostrarDetalle] = React.useState(false)
-
-    const handleDetalle = ()=> {
-        if(mostrarDetalle){
-            setMostrarDetalle(false)
-        } else {
-            setMostrarDetalle(true)
-        }
-    }
 
     return (
         <div className="row">
@@ -23,15 +13,15 @@ const Item = ({item}) => {
                     <div className="col-md-8">
                         <div className="card-body">
                             <h5 className="card-title">{item.nombre}</h5>
-                            <p className="card-text">Breve descripcion: Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo quisquam sit quia.</p>
+                            <p className="card-text">
+                                Breve descripcion: Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo quisquam sit quia.
+                            </p>
                             <small className="text-dark bg-warning">Awesome Pets</small>
-                            <button type="button" className="btn btn-primary btn-sm float-right" onClick={handleDetalle}>Ver mas</button>
+                            <Link to={`/item/${item.id}`} type="button" className="btn btn-primary btn-sm float-right">Ver mas</Link>
                         </div>
                     </div>
                 </div>
             </div>
-
-            {mostrarDetalle && <ItemDetailContainer item={item}/>}
         </div>
 
     )

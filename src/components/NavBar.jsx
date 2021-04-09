@@ -30,27 +30,27 @@ const NavBar = () => {
 
                         <ul id="ul-nav" className="navbar-nav">
                             <li className="nav-item">
-                                <Link to='/' className="nav-link h5 text-light">
+                                <Link to='/inicio' className="nav-link h5 text-light">
                                     Inicio
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <Link to='/servicios' className="nav-link h5 text-light">
+                                <Link to='/category/servicios' className="nav-link h5 text-light">
                                     Servicios
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <Link to={'/refugio'} className="nav-link h5 text-light">
+                                <Link to='/category/refugio' className="nav-link h5 text-light">
                                     Refugio
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <Link to='/wellness' className="nav-link h5 text-light" role="button">
+                                <Link to='/category/wellness' className="nav-link h5 text-light" role="button">
                                     +Wellness
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <Link to='/consultas' className="nav-link h5 text-light">
+                                <Link to='/category/consultas' className="nav-link h5 text-light">
                                     Consultas
                                 </Link>
                             </li>
