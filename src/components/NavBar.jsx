@@ -30,7 +30,7 @@ const NavBar = () => {
 
                         <ul id="ul-nav" className="navbar-nav">
                             <li className="nav-item">
-                                <Link to='/inicio' className="nav-link h5 text-light">
+                                <Link to='/' className="nav-link h5 text-light">
                                     Inicio
                                 </Link>
                             </li>

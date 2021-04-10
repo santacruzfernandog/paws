@@ -14,6 +14,10 @@ function App() {
       <MyContext.Provider value='Fernando'>
           <NavBar/>
           <Switch>
+            <Route path="/" exact >
+              <ItemListContainer/>
+            </Route>
+
             <Route path="/category/:categoryId" exact >
               <ItemListContainer/>
             </Route>
