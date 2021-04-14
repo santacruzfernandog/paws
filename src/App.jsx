@@ -5,30 +5,30 @@ import ItemListContainer from './components/ItemListContainer'
 import NavBar from './components/NavBar'
 import ItemDetailContainer from './components/ItemDetailContainer'
 
-import { MyContext } from './context/MyContext'
+import { CartProvider } from './context/CartContext'
 
 function App() {
 
   return (
-    <BrowserRouter>
-      <MyContext.Provider value='Fernando'>
-          <NavBar/>
-          <Switch>
-            <Route path="/" exact >
-              <ItemListContainer/>
-            </Route>
+    <CartProvider>
+      <BrowserRouter>
+        <NavBar/>
+        <Switch>
+          <Route path="/" exact >
+            <ItemListContainer/>
+          </Route>
 
-            <Route path="/category/:categoryId" exact >
-              <ItemListContainer/>
-            </Route>
-            
-            <Route path="/item/:itemId" exact >
-              <ItemDetailContainer/>
-            </Route>
-          </Switch>
-          <Footer/>
-      </MyContext.Provider>
-    </BrowserRouter>
+          <Route path="/category/:categoryId" exact >
+            <ItemListContainer/>
+          </Route>
+          
+          <Route path="/item/:itemId" exact >
+            <ItemDetailContainer/>
+          </Route>
+        </Switch>
+        <Footer/>
+      </BrowserRouter>
+    </CartProvider>
   );
 }
 

@@ -1,15 +1,25 @@
-import React from 'react'
+import React, {useContext, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import ItemCount from './ItemCount'
+
+import { CartContext } from '../context/CartContext'
 
 const ItemDetail = ({item}) => {
 
     const [cantidad, setCantidad] = React.useState(0)
 
+    const {addItem, cart} = useContext(CartContext)
+
     const seAgrego = (num)=> {
         console.log(`Se agrego ${num} productos al carrito`)
         setCantidad(num)
+        addItem(item,num)
     }
+
+    useEffect(() => {
+        console.log(cart)
+    }, [cart])
+
 
     return (
         <div>
@@ -45,7 +55,9 @@ const ItemDetail = ({item}) => {
                                                 <ItemCount stock={12} initial={1} onAdd={seAgrego}/>
                                             ) : (
                                                 <div className="mx-auto">
-                                                    <Link to="/cart" className="btn btn-sm btn-warning mt-5">Terminar mi compra</Link>
+                                                    <Link to="/cart" className="btn btn-sm btn-warning mt-5">
+                                                        Terminar mi compra
+                                                    </Link>
                                                 </div>
                                             )
                                     }
