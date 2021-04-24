@@ -58,6 +58,7 @@ const NavBar = () => {
                     </div>
                 </div>
 
+
                 <div className="">
                     <CartWidget totalProductos={0}/>
                 </div>

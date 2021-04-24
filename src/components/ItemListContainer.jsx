@@ -21,9 +21,6 @@ const ItemListContainer = () => {
 
       itemsCollection.then((snapshot) => {
         if(snapshot.size > 0){
-          /* console.log(snapshot.docs.map(doc => doc.data()))
-          console.log(snapshot.docs.map(doc => doc.id)) */
-
           setItems(snapshot.docs.map(doc => {
             return {id: doc.id, ...doc.data()}
           }))

@@ -36,12 +36,13 @@ const Cart = () => {
 
         //Actualizar stock en firebase
         for (let cartItem of cart){
-            const docRef = db.collection('items').doc(cartItem.item.id)
-            docRef.update({
+            const documentRef = db.collection('items').doc(cartItem.item.id)
+            documentRef.update({
                 stock: cartItem.item.stock - cartItem.quantity
             })
         }
 
+        
     }
 
     useEffect( ()=>{
