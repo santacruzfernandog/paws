@@ -34,15 +34,26 @@ const Cart = () => {
         .catch(error => {console.log(error)})
         .finally(() => {console.log('Promesa concluida')})
 
-        //Actualizar stock en firebase
-        for (let cartItem of cart){
-            const documentRef = db.collection('items').doc(cartItem.item.id)
-            documentRef.update({
-                stock: cartItem.item.stock - cartItem.quantity
-            })
-        }
 
-        
+        //Actualizar stock en firebase
+        const itemsToUpdate = db.collection('items').where(
+            firebase.firestore.FieldPath.documentId(), 'in', cart.map(i=> i.item.id)
+        )
+
+        const batch = db.batch();
+
+        itemsToUpdate.get()
+        .then( collection=>{
+            collection.docs.forEach(docSnapshot => {
+                batch.update(docSnapshot.ref,{
+                    stock: docSnapshot.data().stock - cart.find(item => item.item.id === docSnapshot.id).quantity
+                })
+            })
+
+            batch.commit().then(res =>{
+                console.log('resultado batch:', res)
+            })
+        })
     }
 
     useEffect( ()=>{
