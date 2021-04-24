@@ -1,35 +1,40 @@
 import React, {useEffect} from 'react'
 import ItemList from './ItemList';
-import {useParams} from 'react-router-dom'
-import data from '../data.js'
+import {getFirestore} from '../firebase'
+import { useParams } from 'react-router';
+
 
 const ItemListContainer = () => {
 
-  const [items, setItems] = React.useState([])
-  const { categoryId } = useParams();
+    const [items, setItems] = React.useState([])
+    const { categoryId } = useParams()
 
-  useEffect(()=>{
-    const promFilter = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        if (categoryId) {
-          const products = data.filter((producto) => {
-            return producto.category.toString() === categoryId;
-          });
-          resolve(products);
-        } else {
-          resolve(data)
+    useEffect(() => {
+      const db = getFirestore()
+      let itemsCollection;
+
+      if(categoryId){
+        itemsCollection = db.collection('items').where( 'category' ,'==' , categoryId ).get()
+      } else {
+        itemsCollection = db.collection('items').get()
+      }
+
+      itemsCollection.then((snapshot) => {
+        if(snapshot.size > 0){
+          /* console.log(snapshot.docs.map(doc => doc.data()))
+          console.log(snapshot.docs.map(doc => doc.id)) */
+
+          setItems(snapshot.docs.map(doc => {
+            return {id: doc.id, ...doc.data()}
+          }))
         }
-      }, 2000);
-    });
-      
-    promFilter.then((resultado) => {
-        setItems(resultado);
-    });
-  }, [categoryId]);
-      
+      })
+
+    },[categoryId])
+        
 
     return (
-        <ItemList items={items} />
+        <ItemList items={items} key={items.id}/>
     )
 }
 

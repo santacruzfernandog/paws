@@ -6,6 +6,7 @@ import NavBar from './components/NavBar'
 import ItemDetailContainer from './components/ItemDetailContainer'
 
 import { CartProvider } from './context/CartContext'
+import Cart from './components/Cart';
 
 function App() {
 
@@ -24,6 +25,11 @@ function App() {
           
           <Route path="/item/:itemId" exact >
             <ItemDetailContainer/>
+          </Route>
+          
+          <Route path="/cart" exact >
+            <h2>Estoy en el Cart</h2>
+            <Cart></Cart>
           </Route>
         </Switch>
         <Footer/>

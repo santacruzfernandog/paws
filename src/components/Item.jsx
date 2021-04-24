@@ -12,9 +12,9 @@ const Item = ({item}) => {
                     </div>
                     <div className="col-md-8">
                         <div className="card-body">
-                            <h5 className="card-title">{item.nombre}</h5>
+                            <h5 className="card-title">{item.title}</h5>
                             <p className="card-text">
-                                Breve descripcion: Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo quisquam sit quia.
+                                Breve descripcion: {item.descripcion}
                             </p>
                             <small className="text-dark bg-warning">Awesome Pets</small>
                             <Link to={`/item/${item.id}`} type="button" className="btn btn-primary btn-sm float-right">Ver mas</Link>

@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import { useParams } from 'react-router-dom'
 import ItemDetail from './ItemDetail'
-import data from '../data.js'
+import {getFirestore} from '../firebase'
 
 const ItemDetailContainer = () => {
 
@@ -9,25 +9,25 @@ const ItemDetailContainer = () => {
     const { itemId } = useParams()
 
     const getItems = (itemId)=> {
-        const info = data[itemId-1]
+        const db = getFirestore()
+        const itemsCollection = db.collection('items')
+        const oneItem = itemsCollection.doc(itemId)
 
-        const promise = new Promise((resolve, reject)=> {
-            resolve(
-                { id:info.id, title:info.nombre, price:info.price, picture:info.img, descripcion:'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo quisquam sit quia assumenda ratione, quasi labore totam cum!', random:Math.floor(Math.random() * 10) + 100 }
-            )
-        })
-
-        return promise
+        return oneItem.get()
     }
 
     useEffect(()=> {
-        getItems(itemId).then(response => setMyItem(response))
+        getItems(itemId).then(response => {
+            if(response.exists){
+                setMyItem(response.data())
+            }
+        })
         return
     },[itemId])
 
     return (
         <div>
-            <ItemDetail item={myItem}/>
+            <ItemDetail item={{id: itemId, ...myItem}}/>
         </div>
     )
 }

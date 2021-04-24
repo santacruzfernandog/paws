@@ -1,25 +1,18 @@
-import React, {useContext, useEffect} from 'react'
-import { Link } from 'react-router-dom'
+import React, {useContext} from 'react'
+import { Link, useParams } from 'react-router-dom'
 import ItemCount from './ItemCount'
-
 import { CartContext } from '../context/CartContext'
 
 const ItemDetail = ({item}) => {
 
     const [cantidad, setCantidad] = React.useState(0)
-
-    const {addItem, cart} = useContext(CartContext)
+    const {addItem} = useContext(CartContext)
+    const { itemId } = useParams()
 
     const seAgrego = (num)=> {
-        console.log(`Se agrego ${num} productos al carrito`)
         setCantidad(num)
         addItem(item,num)
     }
-
-    useEffect(() => {
-        console.log(cart)
-    }, [cart])
-
 
     return (
         <div>
@@ -34,7 +27,7 @@ const ItemDetail = ({item}) => {
                                 <h5 className="d-inline">{item.title}</h5>
                                 <br/>
                                 <small className="text-muted">Numero de </small>
-                                <p className="card-text d-inline">ID: {item.id}</p>
+                                <p className="card-text d-inline">ID: {itemId}</p>
                                 <p className="card-text">Breve descripcion: {item.descripcion}</p>
                                 <small className="text-muted">Aprobado por </small>{item.random} familias
                             </div>

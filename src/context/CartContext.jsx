@@ -7,10 +7,21 @@ export const CartProvider = ({children}) => {
     const [cart, setCart] = React.useState([])
 
     const addItem = (newItem, newQuantity)=>{
-        const {quantity = 0} = cart.find(e=> e.item.id === newItem.id) || {}
-        const newCart = cart.filter(e => e.item.id !== newItem.id)
 
-        setCart([...newCart, { item: newItem , quantity: quantity + newQuantity  }])
+        const prevCartItem = cart.find( elem => elem.item.id === newItem.id)
+
+        let newCart = null;
+        let quant = 0;
+        if(prevCartItem){
+            newCart = cart.filter(elem => elem.item.id !== newItem.id)
+            quant = prevCartItem.quantity + newQuantity
+        } else {
+            newCart = [...cart]
+            quant = newQuantity
+        }
+
+        setCart([...newCart,
+                { item: newItem, quantity: quant }])
     } // agregar cierta cantidad de un ítem al carrito
 
     const removeItem = (itemId) => {

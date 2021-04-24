@@ -18,7 +18,7 @@ const CartWidget = () => {
 
     return (
         <div className="d-flex flex-column">
-            <Link to={''} className="mx-auto" href="#"><i className="fas fa-shopping-cart fa-lg text-light"></i></Link>
+            <Link to='/cart' className="mx-auto" href="#"><i className="fas fa-shopping-cart fa-lg text-light"></i></Link>
             <small className="text-light mt-1">{`${cantidadTotal} de Servicios`}</small>
         </div>
     )
