@@ -45,8 +45,8 @@ const NavBar = () => {
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <Link to='/category/wellness' className="nav-link h5 text-light" role="button">
-                                    +Wellness
+                                <Link to='/category/veterinario' className="nav-link h5 text-light" role="button">
+                                    Veterinario
                                 </Link>
                             </li>
                             <li className="nav-item">
