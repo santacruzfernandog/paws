@@ -1,85 +1,18 @@
 # Detalles del Proyecto: Aw.Pets
 
 
-Aw.Pets (Awesome Pets). La idea del proyecto es desarrollar una plataforma online que ofrece servicios para mascotas (algunos gratuitos y otros pagos).
-
-Va a contener una seccion para explorar los servicios que se ofrecen detallando las prestaciones, quizas tambien ofrecer un servicio de "Obra social" para mascotas, una seccion de adopcion responsable, educacion y adiestramiento, entre otras.
-
-Cada parte estara sujeta a las posibilidades y al alcance del curso. Seguramente en el camino ira tomando forma y definiendo el objetivo final.
+Demostracion del proyecto en formato GIF: https://drive.google.com/drive/folders/1QTDtN_4ntoGugGQdPb5aaYta8oIPgf5I?usp=sharing
 
 
+Aw.Pets (Awesome Pets) es un proyecto simula un eCommerce orientado principalmente a prestaciones de servicios para mascotas, y por consiguiente, a la venta de productos para perros y gatos, desarrollado en React.
 
+Las secciones de este eCommerce se componen del Inicio, Productos (para perros o gatos), Servicios y Veterinario (servicios que solo pueden ser ejercidos y ofrecidos por un profesional).
 
+En la página de Inicio se muestran todos los Items que se ofrecen, y en cada sección señalada en el NavBar se muestran los Items filtrados por la sección elegida.
 
+Los Items ofrecidos son mostrados en una Card simple, con la idea de dar una idea general. Si el usuario desea saber más, cada Item cuenta con una ruta que lleva al detalle del Item. Allí, si el usuario lo desea, puede seleccionar la cantidad de articulos o items a comprar, y consecuentemente puede proceder a finalizar su compra o continuar agregando items al carrito.
 
+En el Carrito se muestran todos los productos que el usuario seleccionó para comprar, y cada item con su respectiva cantidad seleccionada.
+Para finalizar la compra, se le solicita al usuario ingresar sus datos de contacto con un modal, siendo estos requeridos por el formulario. De no completarse algun campo, no se podrá proceder a generar la orden de compra.
 
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Una vez facilitada la información, se generará una orden de compra, y se le informa al usuario un ID correspondiente a la orden de compra generada.
