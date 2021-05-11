@@ -15,47 +15,55 @@ const ItemDetail = ({item}) => {
     }
 
     return (
-        <div>
-            <div className="col-lg-9" key={item.id}>
-                <div className="card mb-2 card-width">
-                    <div id="" className="row no-gutters">
-                        <div className="col-md-3 d-flex align-items-center justify-content-center">
-                            <img src={item.picture} alt="" className="img-fluid" width=""/>
-                        </div>
-                        <div className="col-md-6">
-                            <div id="" className="card-body p-0 pl-2 pt-2">
-                                <h5 className="d-inline">{item.title}</h5>
-                                <br/>
-                                <small className="text-muted">Numero de </small>
-                                <p className="card-text d-inline">ID: {itemId}</p>
-                                <p className="card-text">Breve descripcion: {item.descripcion}</p>
-                                <small className="text-muted">Aprobado por </small>{item.random} familias
-                            </div>
-                        </div>
-                        <div className="col-md-3">
-                            <div className="card-body p-2">
-                                <div className="d-flex justify-content-between align-items-center">
-                                    <div className="d-flex">
-                                        <h4 id="teacher-price" className="mb-0">${item.price}.-</h4><small className="text-muted pt-2 ml-2">/pet.</small>
-                                    </div>
-                                    <div className="d-inline-flex justify-content-center align-items-center">
-                                        <i className="fas fa-star fa-sm px-2 text-warning"></i><h6 className="mb-0">4.9</h6>
-                                    </div>
+        <div className="row mt-5">
+            <div className="col-md-5 d-flex justify-content-center border border-warning">
+                <img src={item.picture} className="img-fluid" alt=""/>
+            </div>
+            <div className="col-md-7">
+                <p className="text-muted">ID: {itemId}</p>
+                <h6 className="text-capitalize text-info m-0">{item.category}</h6>
+                <h2 className="text-dark">{item.title}</h2>
+                <p className="lead">{item.descripcion}</p>
+                <h6><i class="fas fa-star text-warning fa-lg px-1"></i> {item.random} Opiniones</h6>
+
+                <h1 className="text-center text-darkblue">$ {item.price}.-</h1>
+                <div id="card-buttons" className="d-flex flex-column justify-content-center align-items-center">
+                    {
+                        cantidad === 0 ? (
+                            <ItemCount stock={12} initial={1} onAdd={seAgrego}/>
+                        ) : (<>
+                                <div className="mx-auto">
+                                    <Link to="/cart" className="btn btn-sm btn-warning mt-5">
+                                        Terminar mi compra
+                                    </Link>
                                 </div>
-                                <div className="d-flex">
-                                    {
-                                        cantidad === 0 ? (
-                                                <ItemCount stock={12} initial={1} onAdd={seAgrego}/>
-                                            ) : (
-                                                <div className="mx-auto">
-                                                    <Link to="/cart" className="btn btn-sm btn-warning mt-5">
-                                                        Terminar mi compra
-                                                    </Link>
-                                                </div>
-                                            )
-                                    }
+
+                                <div className="mx-auto">
+                                    <Link to="/" className="btn btn-sm btn-success mt-2">
+                                        Seguir comprando
+                                    </Link>
                                 </div>
-                            </div>
+                            </>
+                        )
+                    }
+                </div>
+                <hr/>
+                
+                <div className="">
+                    <h6 className="text-center m-0">Medios de Pago</h6>
+                    <small className="d-block text-center mb-1">abona a traves de</small>
+                    <div className="">
+                        <div className="d-flex justify-content-center align-items-center">
+                            <i className="far fa-money-bill-alt fa-lg pr-3"></i>
+                            <span className="">Efectivo o Tarjeta</span>
+                        </div>
+                        <div className="d-flex justify-content-center align-items-center">
+                            <i className="far fa-credit-card fa-lg pr-3"></i>
+                            <span className="">Transferencia Bancaria</span>
+                        </div>
+                        <div className="d-flex justify-content-center align-items-center">
+                            <i className="fas fa-qrcode fa-lg pr-3"></i>
+                            <span className="">MercadoPago</span>
                         </div>
                     </div>
                 </div>

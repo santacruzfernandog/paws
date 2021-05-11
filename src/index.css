@@ -8,6 +8,27 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background: url('./img/background1.png');
+  background-repeat: no-repeat;
+  background-position-y: top;
+}
+
+#servicios{
+  background: url('./img/background2.png');
+  background-repeat: no-repeat;
+  background-position-y: top;
+}
+
+#informacion{
+  background: url('./img/background4.png');
+  background-repeat: no-repeat;
+  background-position-y: bottom;
+}
+
+.spinner-size{
+  width: 5rem;
+  height: 5rem;
 }
 
 code {
@@ -15,7 +36,11 @@ code {
     monospace;
 }
 
-#my-brand, footer{
+.img-height{
+  height: 13em;
+}
+
+#my-brand, footer, .lobster-font{
   font-family: 'Lobster Two', cursive;
 }
 
@@ -26,4 +51,8 @@ code {
 #main-card-title, #ul-nav, #subtitle{
   font-family: 'Nunito', sans-serif;
   font-size: 1.8em;
+}
+
+.text-darkblue{
+  color: rgb(37, 37, 116);
 }

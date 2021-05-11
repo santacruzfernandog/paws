@@ -5,15 +5,16 @@ import { CartContext } from '../context/CartContext'
 import firebase from 'firebase/app'
 import 'firebase/firestore'
 import {getFirestore} from '../firebase'
+import AlertOrder from './AlertOrder'
 
 const Cart = () => {
 
     const [name, setName] = useState('')
     const [phone, setPhone] = useState('')
     const [email, setEmail] = useState('')
+    const [email2, setEmail2] = useState('')
+    const [formCompleted, setFormCompleted] = useState(true)
     const [idOrder, setIdOrder] = useState(null)
-    const [showForm, setShowForm] = useState(false)
-
 
     const { cart, removeItem, clear } = useContext(CartContext)
     const [totalItems, setTotalItems] = useState(0)
@@ -74,83 +75,161 @@ const Cart = () => {
             countPrecio += cartItem.quantity * cartItem.item.price
         }
 
+        if(name && phone && email && email && email === email2){
+            setFormCompleted(false)
+        }else{
+            setFormCompleted(true)
+        }
+
         setTotalItems(countItem)
         setTotalPrecio(countPrecio)
-    } ,[cart])
+    } ,[cart, name, phone, email, email2])
 
 
     return (
-        <div className="container-fluid">
-            {
-                !cart.length ?
-                <h2>No hay items en el carrito.
-                    <Link to="/">Volver al Home</Link>
-                </h2> : (
-                    <>
-                    {
-                        cart.map(elem => 
-                            <div key={elem.item.id}>
-                                <div>
-                                    Titulo: {elem.item.title}
-                                </div>
-                                <div>
-                                    Cantidad: {elem.quantity}
-                                </div>
-                                <button className="btn btn-primary btn-sm" onClick={() => removeItem(elem.item.id) }>
-                                    Borrar
-                                </button>
+        <div className="container-fluid my-5">
+            <div className="">
+                
+                {
+                    idOrder ? (
+                        <AlertOrder idCompra={idOrder} />
+                    ) : null
+                }
+
+                {
+                    !cart.length ?
+                    <h2 className="text-center">No hay items en el carrito,
+                        <Link to="/" className="ml-2">volver al Inicio</Link>
+                    </h2> : (
+                        <>
+                            <div className="d-flex justify-content-center align-items-center mb-5">
+                                <span className="text-center text-warning text-capitalize lobster-font h1 mr-2">Awesome Pets:</span>
+                                <span className="text-secondary h1">Items en Carrito</span>
                             </div>
-                        )
-                    }
-
-                        <div>
-                            Total: {totalItems} y {totalPrecio}
-                        </div>
-                        <button className="btn btn-danger btn-sm" onClick={clear}>
-                            Borrar todo
-                        </button>
-                        <button className="btn btn-warning btn-sm" onClick={()=> {setShowForm(!showForm)}}>Finalizar Compra</button>
-
-                        {
-                            showForm ? (
-                                <form onSubmit={generarOrden} className="mt-5">
-                                    <div className="form-row">
-                                        <div className="col-md-3">
-                                            <label htmlFor="userName">Nombre</label>
-                                            <input className="form-control" type="text" id="userName" value={name} onChange={ (e)=> setName(e.target.value) }/>
+                            {
+                                cart.map(elem => 
+                                            
+                                    <div class="col-md-4 mx-auto">
+                                        <div class="card border border-warning mb-2">
+                                            <div class="row no-gutters">
+                                                <div class="col-md-3 d-flex align-items-center justify-content-center">
+                                                    <img src={elem.item.picture} alt="" class="img-fluid"/>
+                                                </div>
+                                                    <div id="" class="card-body p-0 pl-2 pt-2">
+                                                        <h4 class="text-center">{elem.item.title}</h4>
+                                                        <h5 className="text-center"><span>Precio: </span>$ {elem.item.price}.-</h5>
+                                                        <h5 className="text-center"><span>Cantidad: </span>{elem.quantity}</h5>
+                                                    </div>
+                                                    <div class="d-flex align-items-center m-2">
+                                                        <button class="btn btn-danger btn-sm" onClick={() => removeItem(elem.item.id) }>
+                                                            <i className="fas fa-trash"></i>
+                                                        </button>
+                                                    </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div className="form-row">
-                                        <div className="col-md-3 mt-2">
-                                            <label htmlFor="userPhone">Telefono</label>
-                                            <input className="form-control" type="text" id="userPhone" value={phone} onChange={ (e)=> setPhone(e.target.value) }/>
-                                        </div>
-                                    </div>
-                                    <div className="form-row">
-                                        <div className="col-md-3 mt-2">
-                                            <label htmlFor="userEmail">Email</label>
-                                            <input className="form-control" type="text" id="userEmail" value={email} onChange={ (e)=> setEmail(e.target.value) }/>
-                                        </div>
-                                    </div>
-                                    <button className="btn btn-primary mt-3" type="submit">Generar Orden</button>
-                                </form>
-                            ) : null
-                        }
-                    </>
-                )
-            }
+                                )
+                            }
+                            <div className="col-md-4 mx-auto">
+                                <div className="card card-body border border-info">
+                                    <h5 className="m-0"><span>Cantidad total:</span><span className="float-right h4">{totalItems} Items</span></h5>
+                                    <h5 className="m-0"><span>Total a Pagar:</span><span className="float-right h4">$ {totalPrecio}.-</span></h5>
+                                </div>
+                                <div className="col-md-4 d-flex mx-auto mt-5 btn-group-vertical p-0">
+                                    <button className="btn btn-danger" onClick={clear}>
+                                        Borrar Todo
+                                    </button>
+                                    <button className="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
+                                        Finalizar Compra
+                                    </button>
+                                </div>
+                            </div>
 
-            {
-                idOrder ? (
-                    <div className="alert alert-success alert-dismissible fade show mt-5 h5" role="alert">
-                        Orden de compra generada correctamente!<br/>
-                        <strong>ID de orden: {idOrder}</strong>
-                        <button type="button" className="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                ) : null
-            }
+                            <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div className="modal-dialog">
+                                    <div className="modal-content">
+                                        <div className="modal-header">
+                                            <h5 className="modal-title">Dejanos tus datos de contacto, por favor</h5>
+                                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div className="modal-body">
+                                            <form onSubmit={generarOrden} class="needs-validation" novalidate>
+                                                <div className="form-row">
+                                                    <div className="col">
+                                                        <label htmlFor="userName">Nombre</label>
+                                                        <input
+                                                            required
+                                                            className="form-control"
+                                                            type="text"
+                                                            id="userName"
+                                                            placeholder="Ingresa tu nombre"
+                                                            value={name}
+                                                            onChange={ (e)=> setName(e.target.value) }
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div className="form-row">
+                                                    <div className="col mt-2">
+                                                        <label htmlFor="userPhone">Telefono</label>
+                                                        <input
+                                                            required
+                                                            className="form-control"
+                                                            type="number"
+                                                            id="userPhone"
+                                                            placeholder="Ingresa tu telefono"
+                                                            value={phone}
+                                                            onChange={ (e)=> setPhone(e.target.value) }
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div className="form-row">
+                                                    <div className="col mt-2">
+                                                        <label htmlFor="userEmail">Email</label>
+                                                        <input
+                                                            required
+                                                            className="form-control"
+                                                            type="email"
+                                                            id="userEmail"
+                                                            placeholder="Ingresa tu Email"
+                                                            value={email}
+                                                            onChange={ (e)=> setEmail(e.target.value) }
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div className="form-row">
+                                                    <div className="col mt-2">
+                                                        <label htmlFor="userEmail">Confirma tu email</label>
+                                                        <input
+                                                            required
+                                                            className="form-control"
+                                                            type="email"
+                                                            id="userEmail2"
+                                                            placeholder="Ingresa tu Email"
+                                                            value={email2}
+                                                            onChange={ (e)=> setEmail2(e.target.value) }
+                                                        />
+                                                    </div>
+                                                </div>
+                                                
+                                                <div className="modal-footer">
+                                                    <button type="button" className="btn btn-secondary btn-sm" data-dismiss="modal">
+                                                        Cerrar
+                                                    </button>
+                                                    <button type="submit" className="btn btn-primary btn-sm" disabled={ formCompleted/* !name || !phone || !(email === email2 ) */ }>
+                                                        Confirmar Compra
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </>
+                    )
+                }
+            </div>
         </div>
     )
 }

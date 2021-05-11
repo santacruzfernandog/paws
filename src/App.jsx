@@ -3,10 +3,14 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Footer from './components/Footer'
 import ItemListContainer from './components/ItemListContainer'
 import NavBar from './components/NavBar'
+import Information from './components/Information'
+import Services from './components/Services'
+
 import ItemDetailContainer from './components/ItemDetailContainer'
 
 import { CartProvider } from './context/CartContext'
 import Cart from './components/Cart';
+import Galeria from './components/Galery';
 
 function App() {
 
@@ -17,6 +21,9 @@ function App() {
         <Switch>
           <Route path="/" exact >
             <ItemListContainer/>
+            <Services/>
+            <Galeria/>
+            <Information/>
           </Route>
 
           <Route path="/category/:categoryId" exact >
@@ -28,10 +35,10 @@ function App() {
           </Route>
           
           <Route path="/cart" exact >
-            <h2>Estoy en el Cart</h2>
-            <Cart></Cart>
+            <Cart/>
           </Route>
         </Switch>
+
         <Footer/>
       </BrowserRouter>
     </CartProvider>

@@ -4,19 +4,16 @@ import { Link } from 'react-router-dom'
 const Item = ({item}) => {
 
     return (
-        <div className="col-md-6">
-            <div className="card mb-3 shadow border-white" /* style={{width: "540px"}} */>
-                <div className="row no-gutters">
-                    <div className="col-md-4 d-flex justify-content-center align-items-center">
-                        <i className="fas fa-paw fa-7x text-dark"></i>
-                    </div>
-                    <div className="col-md-8">
-                        <div className="card-body">
-                            <h5 className="card-title">{item.title}</h5>
-                            <p className="card-text">
-                                Breve descripcion: {item.descripcion}
-                            </p>
-                            <small className="text-dark bg-warning shadow rounded">Awesome Pets</small>
+        <div className="col-md-2 mb-3">
+            <div className="card shadow border-white">
+                <img src={item.picture} className="img-fluid" alt=""/>
+                <div className="">
+                    <div className="card-body">
+                    <small className="text-white bg-info rounded text-capitalize px-1">{item.category}</small>
+
+                        <h5 className="card-title">{item.title}</h5>
+                        <div className="d-flex justify-content-between">
+                            <h5>$ {item.price}.-</h5>
                             <Link to={`/item/${item.id}`} type="button" className="btn btn-warning btn-sm float-right">Ver mas</Link>
                         </div>
                     </div>
