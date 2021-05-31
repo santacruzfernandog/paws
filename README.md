@@ -10,7 +10,7 @@ Las secciones de este eCommerce se componen del Inicio, Productos (para perros o
 
 En la página de Inicio se muestran todos los Items que se ofrecen, y en cada sección señalada en el NavBar se muestran los Items filtrados por la sección elegida.
 
-Los Items ofrecidos son mostrados en una Card simple, con la idea de dar una idea general. Si el usuario desea saber más, cada Item cuenta con una ruta que lleva al detalle del Item. Allí, si el usuario lo desea, puede seleccionar la cantidad de articulos o items a comprar, y consecuentemente puede proceder a finalizar su compra o continuar agregando items al carrito.
+Los Items ofrecidos son mostrados en una Card simple, con la idea de dar una vista general. Si el usuario desea saber más, cada item cuenta con una ruta que lleva al detalle del Item. Allí, si el usuario lo desea, puede seleccionar la cantidad de articulos o items a comprar, y consecuentemente puede proceder a finalizar su compra o continuar agregando items al carrito.
 
 En el Carrito se muestran todos los productos que el usuario seleccionó para comprar, y cada item con su respectiva cantidad seleccionada.
 Para finalizar la compra, se le solicita al usuario ingresar sus datos de contacto con un modal, siendo estos requeridos por el formulario. De no completarse algun campo, no se podrá proceder a generar la orden de compra.
